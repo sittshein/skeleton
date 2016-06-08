@@ -21,15 +21,15 @@
       config.$inject =  ['$stateProvider', '$urlRouterProvider', '$locationProvider', 'MODULE_CONFIG'];
       function config( $stateProvider, $urlRouterProvider, $locationProvider, MODULE_CONFIG ) {
         
-        $locationProvider.html5Mode(true);
-
         var p = getParams('layout'),
             l = p ? p + '.' : '',
-            layout = '../views/layout/layout.'+l+'html',
-            dashboard = '../views/dashboard/dashboard.'+l+'html';
+            layout = 'views/layout/layout.'+l+'html',
+            dashboard = 'views/dashboard/dashboard.'+l+'html';
 
         $urlRouterProvider
           .otherwise('/app/dashboard');
+          // $locationProvider.html5Mode(true).hashPrefix('!')
+
         $stateProvider
           .state('app', {
             abstract: true,
@@ -52,26 +52,26 @@
 
             .state('app.contact', {
               url: '/contact',
-              templateUrl: 'apps/contact/main.html',
+              templateUrl: 'components/contact/main.html',
               data : { title: 'Contacts', hideFooter: true },
               controller: 'ContactCtrl',
-              resolve: load('apps/contact/contact.js')
+              resolve: load('components/contact/contact.js')
             })
 
             .state('app.calendar', {
               url: '/calendar',
-              templateUrl: 'apps/calendar/main.html',
+              templateUrl: 'components/calendar/main.html',
               data : { title: 'Calendar' },
               controller: 'FullcalendarCtrl',
-              resolve: load(['moment','fullcalendar','ui.calendar','apps/calendar/calendar.js'])
+              resolve: load(['moment','fullcalendar','ui.calendar','components/calendar/calendar.js'])
             })
 
             .state('app.todo', {
               url: '/todo',
-              templateUrl: 'apps/todo/todo.html',
+              templateUrl: 'components/todo/todo.html',
               data : { title: 'Todo' },
               controller: 'TodoCtrl',
-              resolve: load('apps/todo/todo.js')
+              resolve: load('components/todo/todo.js')
             })
             .state('app.todo.list', {
                 url: '/{fold}'
@@ -79,23 +79,23 @@
 
             .state('app.note', {
               url: '/note',
-              templateUrl: 'apps/note/main.html',
+              templateUrl: 'components/note/main.html',
               data : { title: 'Note', hideFooter: true }
             })
             .state('app.note.list', {
               url: '/list',
-              templateUrl: 'apps/note/list.html',
+              templateUrl: 'components/note/list.html',
               data : { title: 'Note'},
               controller: 'NoteCtrl',
-              resolve: load(['apps/note/note.js', 'moment'])
+              resolve: load(['components/note/note.js', 'moment'])
             })
             .state('app.note.item', {
               url: '/{id}',
               views: {
                 '': {
-                  templateUrl: 'apps/note/item.html',
+                  templateUrl: 'components/note/item.html',
                   controller: 'NoteItemCtrl',
-                  resolve: load(['apps/note/note.js', 'moment'])
+                  resolve: load(['components/note/note.js', 'moment'])
                 }
               },
               data : { title: 'Note' }
@@ -124,24 +124,24 @@
 
             .state('app.inbox', {
                 url: '/inbox',
-                templateUrl: 'apps/inbox/main.html',
+                templateUrl: 'components/inbox/main.html',
                 data : { title: 'Inbox'},
                 controller: 'MainCtrl',
-                resolve: load( ['apps/inbox/inbox.js','moment'] )
+                resolve: load( ['components/inbox/inbox.js','moment'] )
             })
             .state('app.inbox.list', {
                 url: '/inbox/{fold}',
-                templateUrl: 'apps/inbox/list.html',
+                templateUrl: 'components/inbox/list.html',
                 controller: 'ListCtrl'
             })
             .state('app.inbox.item', {
                 url: '/{id:[0-9]{1,4}}',
-                templateUrl: 'apps/inbox/item.html',
+                templateUrl: 'components/inbox/item.html',
                 controller: 'DetailCtrl'
             })
             .state('app.inbox.compose', {
                 url: '/compose',
-                templateUrl: 'apps/inbox/new.html',
+                templateUrl: 'components/inbox/new.html',
                 controller: 'NewCtrl',
                 resolve: load( ['summernote', 'ui.select'] )
             })

@@ -19,7 +19,7 @@
         ContactCtrl.$inject = ['$scope', '$http', '$filter', 'contactStorage'];
         function ContactCtrl($scope, $http, $filter, contactStorage) {
           var vm = $scope;
-          vm.items = contactStorage.findAll();
+          vm.items = contactStorage.findAll(); 
 
           if(vm.items.length == 0){
             populateData();
@@ -27,7 +27,7 @@
           selectOne();
 
           function populateData(){
-            $http.get('apps/contact/contacts.json').then(function (resp) {
+            $http.get('components/contact/contacts.json').then(function (resp) {
               vm.items = resp.data.items;
               vm.items.forEach(function (item) {
                   contactStorage.create(item);
