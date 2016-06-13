@@ -29,7 +29,7 @@
         $urlRouterProvider
           .otherwise('/app/dashboard');
           // $locationProvider.html5Mode(true).hashPrefix('!')
-
+            
         $stateProvider
           .state('app', {
             abstract: true,

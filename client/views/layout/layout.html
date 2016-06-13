@@ -1,56 +1,39 @@
   <!-- aside -->
-  <div id="aside" class="app-aside modal fade nav-dropdown" ng-class="{'folded': app.setting.folded}">
-  	<!-- fluid app aside -->
-    <div class="left navside dark dk" layout="column">
-  	  <div class="navbar no-radius">
+  <div id="aside" class="app-aside modal fade nav-expand" ng-class="{'folded': app.setting.folded}">
+    <div class="left navside black dk" layout="column">
+      <div class="navbar no-radius">
         <div ui-include="'../views/blocks/navbar.brand.html'"></div>
       </div>
+      <div flex-no-shrink>
+        <div ui-include="'../views/blocks/aside.top.2.html'"></div>
+      </div>
       <div flex class="hide-scroll">
-          <nav class="scroll nav-light">
-            <div ui-include="'../views/blocks/nav.html'"></div>
-          </nav>
+        <nav class="scroll nav-stacked nav-active-{{app.setting.theme.primary}}">
+          <div ui-include="'../views/blocks/nav.html'"></div>
+        </nav>
       </div>
-      <div flex-no-shrink class="b-t">
-        <div ui-include="'../views/blocks/aside.top.0.html'"></div>
-      </div>
-    </div>
-    
-  <!--ie9 (if you want support the vertical scroll in ie9, use the below code.)
-    <div class="left navside dark dk">
-      <div class="row-col">
-        <div class="navbar no-radius">
-          <div ui-include="'../views/blocks/navbar.brand.html'"></div>
-        </div>
-        <div class="row-row">
-          <div class="row-body scrollable hover">
-            <div class="row-inner">
-              <nav class="nav-light">
-                <div ui-include="'../views/blocks/nav.html'"></div>
-              </nav>
-            </div>
-          </div>
-        </div>
-        <div class="b-t">
-          <div ui-include="'../views/blocks/aside.top.0.html'"></div>
-        </div>
+      <div flex-no-shrink>
+        <div ui-include="'../views/blocks/aside.bottom.0.html'"></div>
       </div>
     </div>
-  -->
-
   </div>
-  <!-- / -->
+  <!-- / aside -->
   
   <!-- content -->
-  <div id="content" class="app-content box-shadow-z0" role="main">
+  <div id="content" class="app-content box-shadow-z1" role="main">
+
     <div class="app-header white box-shadow">
         <div ui-include="'../views/blocks/header.html'"></div>
     </div>
-    <div class="app-footer" ng-class="{'hide': $state.current.data.hideFooter}">
+
+    <div ui-view class="app-body" id="view"></div>
+
+    <div class="app-footer">
       <div ui-include="'../views/blocks/footer.html'"></div>
     </div>
-    <div ui-view class="app-body" id="view"></div>
+
   </div>
-  <!-- / -->
+  <!-- / content -->
 
   <!-- theme switcher -->
   <div id="switcher">
