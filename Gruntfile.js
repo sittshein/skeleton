@@ -91,10 +91,6 @@ module.exports = function(grunt) {
         files: ['<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
         tasks: ['sass', 'postcss']
       },
-      flatkitSass: {
-        files: ['<%= yeoman.client %>/assets/scss/*.scss'],
-        tasks: ['fkitsass'],
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -589,16 +585,6 @@ module.exports = function(grunt) {
           '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.scss'
         }
       }
-    },
-
-    fkitsass: {
-        dist: {
-            files: [
-                {'assets/styles/app.css': ['assets/scss/app.scss']},
-                {'assets/styles/app.rtl.css': ['assets/scss/app.rtl.scss']},
-                {'assets/bootstrap-rtl/dist/bootstrap-rtl.css': ['assets/bootstrap-rtl/scss/bootstrap-rtl.scss']}
-            ]
-        }
     },
 
     injector: {

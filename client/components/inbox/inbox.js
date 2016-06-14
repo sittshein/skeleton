@@ -69,7 +69,7 @@
         }
 
         function populateData(){
-          $http.get('components/inbox/inbox.json').then(function (resp) {
+          $http.get('apps/inbox/inbox.json').then(function (resp) {
             vm.inboxes = resp.data.inbox;
             vm.inboxes.forEach(function (item) {
                 inboxStorage.create(item);
